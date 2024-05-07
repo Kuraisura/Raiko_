@@ -1,437 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Raiko. Japanese and Korean inspired streetwear for everyday expression.">
+  <title>Raiko</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header" class="site-header">
+    <a href="index.html" aria-label="Raiko home"><img src="img/logo.png" class="logo" alt="raiko."></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><i class="far fa-bars"></i></button>
+    <nav aria-label="Primary navigation"><ul id="navbar"><li><a class="active" href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a class="cart-link" href="cart.html" aria-label="Shopping cart"><i class="far fa-shopping-bag"></i><span class="cart-count" data-cart-count hidden>0</span></a></li></ul></nav>
+  </header>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Raiko</title>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <section id="header">
-            <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+  <main>
+    <section class="home-hero">
+      <div class="home-hero__content"><span class="eyebrow">New season, same attitude</span><h1>Streetwear without the uniform.</h1><p>Japanese and Korean influenced pieces made for your own rotation.</p><div class="home-hero__actions"><a class="button" href="shop.html">Shop the collection</a><a class="text-link" href="about.html">Our story <span aria-hidden="true">→</span></a></div></div>
+    </section>
 
-            <div>
-                <ul id="navbar">
-                    <li><a class="active" href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
-                </ul>
-            </div>
-        </section>
+    <section class="home-services page-shell" aria-label="Shopping benefits">
+      <article><img src="img/features/f1.png" alt="Delivery illustration"><div><h2>Free shipping</h2><p>On qualifying local orders.</p></div></article>
+      <article><img src="img/features/f2.png" alt="Online shopping illustration"><div><h2>Easy ordering</h2><p>A clear path from pick to checkout.</p></div></article>
+      <article><img src="img/features/f6.png" alt="Support illustration"><div><h2>Helpful support</h2><p>Talk to us about fit or delivery.</p></div></article>
+    </section>
 
-        <section id="hero">
-            <h4>Trade-in-offer</h4>
-            <h2>Super value deals</h2>
-            <h1>On all products</h1>
-            <p>Save more with coupons and up to 70 percent off</p>
-            <button>Shop Now</button>
+    <section class="raiko-code page-shell">
+      <div class="raiko-code__intro"><span class="eyebrow">The Raiko code</span><h2>Built for people who remix the reference.</h2><p>We borrow energy from Japanese and Korean street style, then leave room for you to finish the look.</p></div>
+      <div class="raiko-code__list"><div><strong>Graphic energy</strong><span>Artwork that can carry a simple outfit.</span></div><div><strong>Loose structure</strong><span>Relaxed shapes designed for layering.</span></div><div><strong>Daily rotation</strong><span>Pieces that work beyond one photo or trend.</span></div></div>
+    </section>
 
-        </section>
+    <section class="collection-story page-shell">
+      <div class="collection-story__image"><img src="img/banner/home-collection.jpg" alt="Streetwear model photographed against city posters"></div>
+      <div class="collection-story__copy"><h2>Two cities. Your own point of view.</h2><p>Relaxed silhouettes, graphic energy, and everyday layers shaped by Tokyo and Seoul.</p><a class="button" href="shop.html">Explore all merchandise</a></div>
+    </section>
 
-        <section id="feature" class="section-p1">
-            <div class="fe-box">
-                <img src="img/features/f1.png" alt="">
-                <h6>Free Shipping</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f2.png" alt="">
-                <h6>Online Order</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f3.png" alt="">
-                <h6>Save Money</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f4.png" alt="">
-                <h6>Promotions</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f5.png" alt="">
-                <h6>Happy Sell</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f6.png" alt="">
-                <h6>F24/7 Support</h6>
-            </div>
-        </section>
+    <section class="home-editorial page-shell">
+      <a class="editorial-tile editorial-tile--large" href="blog.html"><img src="img/banner/home-journal.jpg" alt="Streetwear look photographed on city architecture"><span><strong>How to wear the new season</strong>Read the journal</span></a>
+      <a class="editorial-tile" href="about.html"><img src="img/banner/home-story.jpg" alt="Two models in black and blue streetwear"><span><strong>Built from Cavite</strong>Meet raiko.</span></a>
+    </section>
 
-        <section id="product1" class="section-p1">
-            <h2>Featured Products</h2>
-            <p>Japanese & Korean Collection</p>
-            <div class="pro-container">
-                <div class="pro">
-                    <img src="img/products/f1.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Lovesick Girls BP</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f2.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Consume Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f3.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Eren Yeager</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f4.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Anya Aesthetic</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f5.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Sung Jin Woo Y2K</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f6.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Kiss Me Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f7.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Makima Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f8.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Gojo Satoru</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-            </div>
-        </section>
+    <section class="newsletter-panel page-shell"><div><h2>Stay close to the next drop.</h2><p>New collections, styling ideas, and offers sent occasionally.</p></div><form class="newsletter-form"><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" type="email" required placeholder="Email address"><button class="button" type="submit">Sign up</button></form></section>
+  </main>
 
-        <section id="banner" class="section-m1">
-            <h4>Repair Services </h4>
-            <h2>Up to <span>50% Off</span> - All T-Shirts & Accessories</h2>
-            <button class="normal">Explore More</button>
-        </section>
-
-        <section id="product1" class="section-p1">
-            <h2>New Arrivals</h2>
-            <p>Japanese & Korean Collection</p>
-            <div class="pro-container">
-                <div class="pro">
-                    <img src="img/products/n1.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Lovesick Girls BP</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n2.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Consume Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n3.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Eren Yeager</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n4.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Anya Aesthetic</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n5.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Sung Jin Woo Y2K</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n6.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Kiss Me Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n7.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Makima Shirt</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n8.jpg" alt="">
-                    <div class="des">
-                        <span>Raiko</span>
-                        <h5>Gojo Satoru</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>₱190</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section id="sm-banner" class="section-p1">
-            <div class="banner-box">
-                <h4>Crazy Deals</h4>
-                <h2>Buy 1 Get 1 Free</h2>
-                <span>The best classic chu chu potang ina</span>
-                <button class="white">Learn More</button>
-            </div>
-            <div class="banner-box banner-box2">
-                <h4>Spring/Summer</h4>
-                <h2>Upcoming Season</h2>
-                <span>The best classic chu chu potang ina</span>
-                <button class="white">Collection</button>
-            </div>
-        </section>
-
-        <section id="banner3">
-            <div class="banner-box">             
-                <h2>Seasonal Sale</h2>
-                <h3>Winter Collection -50% OFF</h3>
-            </div>
-            <div class="banner-box banner-box2">             
-                <h2>NEW FOOTWEAR COLLECTION</h2>
-                <h3>Spring/Summer 2024</h3>
-            </div>
-            <div class="banner-box banner-box3">             
-                <h2>Seasonal Sale</h2>
-                <h3>New Trendy Prints</h3>
-            </div>
-        </section>
-
-        <section id="newsletter" class="section-p1 section-m1">
-            <div class="newstext">
-                <h4>Sign Up for Newsletters</h4>
-                <p>Get Email updates about our latest shop and <span>special offers.</span></p>
-            </div>
-            <div class="form">
-                <input type="text" placeholder="Your email address">
-                <button class="normal">Sign Up</button>
-            </div>
-        </section>
-
-        <footer class="section-p1">
-            <div class="col">
-                <img src="img/logo.png" alt="">
-                <h4>Contact</h4>
-                <p><strong>Address:</strong> Buklod Bahayan Cavite Silang</p>
-                <p><strong>Phone:</strong> +012324214</p>
-                <p><strong>Hours</strong> 10:00 - 18:00</p>
-                <div class="follow">
-                    <h4>Follow us</h4>
-                    <div class="icon">
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-instagram"></i>
-                        <i class="fab fa-pinterest-p"></i>
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <h4>About</h4>
-                <a href="#">About Us</a>
-                <a href="#">Delivery Information</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-                <a href="#">Contact Us</a>
-            </div>
-
-            <div class="col">
-                <h4>My Account</h4>
-                <a href="#">Sign In</a>
-                <a href="#">View Cart</a>
-                <a href="#">My Wishlist</a>
-                <a href="#">Track My Order</a>
-                <a href="#">Help</a>
-            </div>
-
-            <div class="col install">
-                <h4>Install App</h4>
-                <p>From App Store or Google Play</p>
-                <div class="row">
-                    <img src="img/pay/app.jpg" alt="">
-                    <img src="img/pay/play.jpg" alt="">
-                </div>
-                <p>Secured Payment Gateways </p>
-                <img src="img/pay/pay.png" alt="">
-            </div>
-            <div class="copyright">
-                <p>2021 ting nga ning nga ning copyright</p>
-            </div>
-        </footer>
-
-
-        <script src="script.js"></script>
-    </body>
+  <footer class="site-footer"><div class="site-footer__grid"><div><img class="footer-logo" src="img/logo.png" alt="raiko."><p>Japanese and Korean inspired streetwear, made for everyday expression.</p></div><div><h3>Explore</h3><a href="shop.html">Shop</a><a href="blog.html">Blog</a><a href="about.html">About us</a></div><div><h3>Help</h3><a href="contact.html">Contact</a><a href="cart.html">Shopping cart</a><a href="#">Delivery information</a></div><div><h3>Visit</h3><p>Buklod Bahayan<br>Cavite, Silang</p></div></div><div class="site-footer__bottom"><p>© 2024 Raiko. All rights reserved.</p></div></footer>
+  <script src="script.js"></script>
+</body>
 </html>
-

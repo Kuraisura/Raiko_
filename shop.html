@@ -1,19 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop Japanese and Korean inspired streetwear from raiko.">
+  <title>Raiko</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header" class="site-header">
+    <a href="index.html" aria-label="Raiko home"><img src="img/logo.png" class="logo" alt="raiko."></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><i class="far fa-bars"></i></button>
+    <nav aria-label="Primary navigation">
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li><li><a class="active" href="shop.html">Shop</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+        <li><a class="cart-link" href="cart.html" aria-label="Shopping cart"><i class="far fa-shopping-bag"></i><span class="cart-count" data-cart-count hidden>0</span></a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Raiko</title>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__inner"><span class="eyebrow">Current collection</span><h1>Wear the city your way.</h1><p>Everyday layers shaped by Tokyo energy, Seoul silhouettes, and the freedom to make them yours.</p></div>
+    </section>
+    <section class="page-shell shop-layout">
+      <aside class="filters" aria-label="Product filters">
+        <form data-filter-form>
+          <button class="panel-close filter-close" type="button" aria-label="Close filters" data-filter-close><i class="far fa-times" aria-hidden="true"></i></button>
+          <h2>Filter pieces</h2>
+          <fieldset class="filter-group"><legend>Category</legend>
+            <label class="check-row"><input type="radio" name="category" value="all" checked> All clothing</label>
+            <label class="check-row"><input type="radio" name="category" value="japanese"> Japanese</label>
+            <label class="check-row"><input type="radio" name="category" value="korean"> Korean</label>
+          </fieldset>
+          <fieldset class="filter-group"><legend>Price</legend>
+            <label class="check-row"><input type="radio" name="price" value="1000" checked> Any price</label>
+            <label class="check-row"><input type="radio" name="price" value="200"> Under ₱200</label>
+            <label class="check-row"><input type="radio" name="price" value="250"> Under ₱250</label>
+          </fieldset>
+          <fieldset class="filter-group"><legend>Size</legend><div class="size-options">
+            <label><input type="checkbox" name="size" value="S"><span>S</span></label><label><input type="checkbox" name="size" value="M"><span>M</span></label><label><input type="checkbox" name="size" value="L"><span>L</span></label><label><input type="checkbox" name="size" value="XL"><span>XL</span></label>
+          </div></fieldset>
+          <button class="button button--ghost" type="reset">Clear filters</button>
+        </form>
+      </aside>
+      <div>
+        <div class="shop-toolbar"><div><h2 class="section-title">Shop all</h2><p data-result-count>16 pieces</p></div><div class="shop-toolbar__actions"><button class="button button--ghost filter-toggle" type="button" data-filter-toggle><i class="far fa-sliders-h" aria-hidden="true"></i> Filter &amp; Sort</button><a class="button button--ghost" href="cart.html">View bag</a></div></div>
+        <div class="product-grid">
+          <article class="product-card" data-product data-category="korean" data-price="190" data-sizes="S M L"><img class="product-card__image" src="img/products/f1.jpg" alt="Lovesick Girls graphic shirt"><div class="product-card__body"><span class="product-card__brand">Raiko</span><h3>Lovesick Girls Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱190</p></div><button class="cart-button" data-add-cart aria-label="Add Lovesick Girls Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="190" data-sizes="M L XL"><img class="product-card__image" src="img/products/f2.jpg" alt="Consume graphic shirt"><div class="product-card__body"><span class="product-card__brand">Raiko</span><h3>Consume Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱190</p></div><button class="cart-button" data-add-cart aria-label="Add Consume Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="220" data-sizes="S M XL"><img class="product-card__image" src="img/products/f3.jpg" alt="Eren Yeager graphic shirt"><div class="product-card__body"><span class="product-card__brand">Raiko</span><h3>Eren Yeager Tee</h3><div class="stars" aria-label="4 out of 5 stars">★★★★☆</div><p class="product-card__price">₱220</p></div><button class="cart-button" data-add-cart aria-label="Add Eren Yeager Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="195" data-sizes="S M L XL"><img class="product-card__image" src="img/products/f4.jpg" alt="Anya aesthetic graphic shirt"><div class="product-card__body"><span class="product-card__brand">Raiko</span><h3>Anya Aesthetic Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱195</p></div><button class="cart-button" data-add-cart aria-label="Add Anya Aesthetic Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="korean" data-price="240" data-sizes="M L XL"><img class="product-card__image" src="img/products/f5.jpg" alt="Sung Jin Woo Y2K graphic shirt"><div class="product-card__body"><span class="product-card__brand">Raiko</span><h3>Sung Jin Woo Y2K</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱240</p></div><button class="cart-button" data-add-cart aria-label="Add Sung Jin Woo Y2K to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="korean" data-price="180" data-sizes="S M"><img class="product-card__image" src="img/products/f6.jpg" alt="Kiss Me graphic shirt"><div class="product-card__body"><span class="product-card__brand">Raiko</span><h3>Kiss Me Tee</h3><div class="stars" aria-label="4 out of 5 stars">★★★★☆</div><p class="product-card__price">₱180</p></div><button class="cart-button" data-add-cart aria-label="Add Kiss Me Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="230" data-sizes="M L XL"><img class="product-card__image" src="img/products/f7.jpg" alt="Makima graphic shirt"><div class="product-card__body"><span class="product-card__brand">Raiko</span><h3>Makima Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱230</p></div><button class="cart-button" data-add-cart aria-label="Add Makima Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="250" data-sizes="S L XL"><img class="product-card__image" src="img/products/f8.jpg" alt="Gojo Satoru graphic shirt"><div class="product-card__body"><span class="product-card__brand">Raiko</span><h3>Gojo Satoru Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱250</p></div><button class="cart-button" data-add-cart aria-label="Add Gojo Satoru Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="210" data-sizes="S M L"><img class="product-card__image" src="img/products/n1.jpg" alt="Black Sukuna graphic shirt from Jujutsu Kaisen"><div class="product-card__body"><span class="product-card__brand">Japanese · Jujutsu Kaisen</span><h3>Sukuna Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱210</p></div><button class="cart-button" data-add-cart aria-label="Add Sukuna Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="225" data-sizes="M L XL"><img class="product-card__image" src="img/products/n2.jpg" alt="Japanese illustrated graphic shirt"><div class="product-card__body"><span class="product-card__brand">New arrival</span><h3>Night Market Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱225</p></div><button class="cart-button" data-add-cart aria-label="Add Night Market Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="235" data-sizes="S M XL"><img class="product-card__image" src="img/products/n3.jpg" alt="Dark anime graphic shirt"><div class="product-card__body"><span class="product-card__brand">New arrival</span><h3>Midnight Spirit Tee</h3><div class="stars" aria-label="4 out of 5 stars">★★★★☆</div><p class="product-card__price">₱235</p></div><button class="cart-button" data-add-cart aria-label="Add Midnight Spirit Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="korean" data-price="195" data-sizes="S M L XL"><img class="product-card__image" src="img/products/n4.jpg" alt="Minimal Korean graphic shirt"><div class="product-card__body"><span class="product-card__brand">New arrival</span><h3>Soft Signal Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱195</p></div><button class="cart-button" data-add-cart aria-label="Add Soft Signal Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="245" data-sizes="M L XL"><img class="product-card__image" src="img/products/n5.jpg" alt="Japanese monochrome graphic shirt"><div class="product-card__body"><span class="product-card__brand">New arrival</span><h3>Monochrome City Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱245</p></div><button class="cart-button" data-add-cart aria-label="Add Monochrome City Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="korean" data-price="200" data-sizes="S M L"><img class="product-card__image" src="img/products/n6.jpg" alt="Korean street graphic shirt"><div class="product-card__body"><span class="product-card__brand">New arrival</span><h3>After Hours Tee</h3><div class="stars" aria-label="4 out of 5 stars">★★★★☆</div><p class="product-card__price">₱200</p></div><button class="cart-button" data-add-cart aria-label="Add After Hours Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="japanese" data-price="250" data-sizes="M L XL"><img class="product-card__image" src="img/products/n7.jpg" alt="Japanese red graphic shirt"><div class="product-card__body"><span class="product-card__brand">New arrival</span><h3>Red Thread Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱250</p></div><button class="cart-button" data-add-cart aria-label="Add Red Thread Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <article class="product-card" data-product data-category="korean" data-price="215" data-sizes="S L XL"><img class="product-card__image" src="img/products/n8.jpg" alt="Blue Korean typography shirt"><div class="product-card__body"><span class="product-card__brand">New arrival</span><h3>Blue Type Tee</h3><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p class="product-card__price">₱215</p></div><button class="cart-button" data-add-cart aria-label="Add Blue Type Tee to cart"><i class="fal fa-shopping-bag"></i></button></article>
+          <div class="empty-state" data-empty-products hidden><h3>No pieces match those filters.</h3><p>Try another size, category, or price range.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="filter-backdrop" data-filter-backdrop hidden></div>
 
-        <link rel="stylesheet" href="style.css">
-    </head>
-
-    <body>
-
-        <script src="script.js"></script>
-    </body>
-
+  <footer class="site-footer"><div class="site-footer__grid"><div><img class="footer-logo" src="img/logo.png" alt="raiko."><p>Japanese and Korean inspired streetwear, made for everyday expression.</p></div><div><h3>Explore</h3><a href="shop.html">Shop</a><a href="blog.html">Blog</a><a href="about.html">About us</a></div><div><h3>Help</h3><a href="contact.html">Contact</a><a href="cart.html">Shopping cart</a><a href="#">Delivery information</a></div><div><h3>Visit</h3><p>Buklod Bahayan<br>Cavite, Silang</p></div></div><div class="site-footer__bottom"><p>© 2024 Raiko. All rights reserved.</p></div></footer>
+  <script src="script.js"></script>
+</body>
 </html>

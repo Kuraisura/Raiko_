@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Complete your Raiko order details.">
+  <title>Raiko</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header id="header" class="site-header">
+    <a href="index.html" aria-label="Raiko home"><img src="img/logo.png" class="logo" alt="raiko."></a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><i class="far fa-bars"></i></button>
+    <nav aria-label="Primary navigation"><ul id="navbar"><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a class="active cart-link" href="cart.html" aria-label="Shopping cart"><i class="far fa-shopping-bag"></i><span class="cart-count" data-cart-count hidden>0</span></a></li></ul></nav>
+  </header>
+  <main>
+    <section class="page-hero"><div class="page-hero__inner"><span class="eyebrow">Final details</span><h1>Where should we send it?</h1><p>Review your selected pieces and complete the delivery form.</p></div></section>
+    <section class="page-shell checkout-layout" data-checkout>
+      <form class="contact-form checkout-form" data-checkout-form>
+        <h2>Delivery details</h2>
+        <div class="form-field"><label for="checkout-name">Full name</label><input id="checkout-name" name="name" type="text" autocomplete="name" maxlength="25" required data-letters-only></div>
+        <div class="form-field"><label for="checkout-email">Email</label><input id="checkout-email" name="email" type="email" autocomplete="email" maxlength="40" pattern="[A-Za-z0-9]+@[A-Za-z0-9]+" required data-email-safe></div>
+        <div class="form-field"><label for="checkout-phone">Phone</label><input id="checkout-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" required></div>
+        <div class="form-field"><label for="checkout-address">Delivery address</label><textarea id="checkout-address" name="address" autocomplete="street-address" maxlength="300" required></textarea></div>
+        <button class="button" type="submit">Place order</button>
+        <p class="form-feedback" role="status" data-form-feedback></p>
+      </form>
+      <aside class="checkout-order"><span class="eyebrow">Your selection</span><h2>Order summary</h2><div data-checkout-items></div><div class="summary-row summary-row--total"><span>Total</span><strong data-cart-total>₱0</strong></div><a class="text-link" href="cart.html">Edit shopping bag</a></aside>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="site-footer__grid"><div><img class="footer-logo" src="img/logo.png" alt="raiko."><p>Japanese and Korean inspired streetwear, made for everyday expression.</p></div><div><h3>Explore</h3><a href="shop.html">Shop</a><a href="blog.html">Blog</a><a href="about.html">About us</a></div><div><h3>Help</h3><a href="contact.html">Contact</a><a href="cart.html">Shopping cart</a></div><div><h3>Visit</h3><p>Buklod Bahayan<br>Cavite, Silang</p></div></div><div class="site-footer__bottom"><p>© 2024 Raiko. All rights reserved.</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
