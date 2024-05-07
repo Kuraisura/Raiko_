@@ -3,7 +3,7 @@
 1. Open the Supabase SQL Editor and run `supabase.sql` once. It creates the contact, newsletter, product, order, and order-item tables and seeds all 16 products with stable IDs and zero stock.
 2. Fill in the Supabase and Resend values in `.env.local` using `.env.example` as the key list.
 3. Stop the Python static server if it is running.
-4. Start the site with `node server.js`.
+4. Start the site with `node dev-server.js`.
 5. Open `http://127.0.0.1:4173`.
 
 `SUPABASE_URL` and `SUPABASE_ANON` connect the contact and checkout APIs to Supabase. `RESEND_API_KEY` authorizes notification delivery, `RESEND_TO_EMAIL` is your notification inbox, and `RESEND_FROM_EMAIL` is the sender. During testing, use `Raiko Website <onboarding@resend.dev>` and send only to the email associated with your Resend account. For production recipients, verify a domain in Resend and use an address on that domain as `RESEND_FROM_EMAIL`.
@@ -25,4 +25,4 @@ Then change the matching front-end `data-stock` state or product catalog renderi
 5. In **Project Settings → Environment Variables**, add `SUPABASE_URL`, `SUPABASE_ANON`, `RESEND_API_KEY`, `RESEND_TO_EMAIL`, and `RESEND_FROM_EMAIL` for Production, Preview, and Development as needed.
 6. Redeploy after saving environment variables. Vercel only applies new environment-variable values to new deployments.
 
-The files in `api/` are Vercel Functions. `server.js` remains the local development server and must not be entered as Vercel's build or start command.
+The files in `api/` are Vercel Functions. `dev-server.js` is only for local development and must not be entered as Vercel's build or start command.
