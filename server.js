@@ -93,6 +93,28 @@ async function insertInto(table, payload) {
   }
 }
 
+async function sendContactNotification({ name, email, subject, message }) {
+  const apiKey = process.env.RESEND_API_KEY;
+  const to = process.env.RESEND_TO_EMAIL || process.env.RESEND_EMAIL;
+  const from = process.env.RESEND_FROM_EMAIL || "Raiko Website <onboarding@resend.dev>";
+  if (!apiKey || !to) {
+    const error = new Error("Resend API key or recipient is missing");
+    error.publicCode = "RESEND_NOT_CONFIGURED";
+    throw error;
+  }
+  const result = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ from, to: [to], reply_to: email, subject: `Raiko contact: ${subject}`, text: `New Raiko contact message\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}` })
+  });
+  if (!result.ok) {
+    const error = new Error(await result.text() || "Resend request failed");
+    error.publicCode = result.status === 403 ? "RESEND_SENDER_REJECTED" : "RESEND_REQUEST_REJECTED";
+    throw error;
+  }
+  return result.json();
+}
+
 async function selectProducts(ids) {
   const url = process.env.SUPABASE_URL;
   const anon = process.env.SUPABASE_ANON;
@@ -121,7 +143,8 @@ async function handleAPI(request, response) {
       name, email, subject, message,
       recipient_email: process.env.RESEND_EMAIL || null
     });
-    return json(response, 201, { ok: true });
+    const notification = await sendContactNotification({ name, email, subject, message });
+    return json(response, 201, { ok: true, notificationId: notification.id });
   }
   if (request.url === "/api/newsletter") {
     const email = String(body.email || "").trim();
@@ -176,6 +199,9 @@ const server = http.createServer(async (request, response) => {
     if (error.publicCode === "SUPABASE_NOT_CONFIGURED") return json(response, 503, { error: "The contact service is not configured.", code: error.publicCode, diagnosticId });
     if (error.publicCode === "SUPABASE_SCHEMA_MISSING") return json(response, 503, { error: "The contact database table has not been created yet.", code: error.publicCode, diagnosticId });
     if (error.publicCode === "SUPABASE_REQUEST_REJECTED") return json(response, 502, { error: "Supabase rejected the contact request.", code: error.publicCode, diagnosticId });
+    if (error.publicCode === "RESEND_NOT_CONFIGURED") return json(response, 503, { error: "Email notifications are not configured.", code: error.publicCode, diagnosticId });
+    if (error.publicCode === "RESEND_SENDER_REJECTED") return json(response, 502, { error: "Resend rejected the sender address. Verify the sending domain or use your Resend account email while testing.", code: error.publicCode, diagnosticId });
+    if (error.publicCode === "RESEND_REQUEST_REJECTED") return json(response, 502, { error: "Resend could not send the notification.", code: error.publicCode, diagnosticId });
     return json(response, 500, { error: "Unable to complete the request.", code: "INTERNAL_ERROR", diagnosticId });
   }
 });
