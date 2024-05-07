@@ -21,7 +21,7 @@
       <form class="contact-form checkout-form" data-checkout-form>
         <h2>Delivery details</h2>
         <div class="form-field"><label for="checkout-name">Full name</label><input id="checkout-name" name="name" type="text" autocomplete="name" maxlength="25" required data-letters-only></div>
-        <div class="form-field"><label for="checkout-email">Email</label><input id="checkout-email" name="email" type="email" autocomplete="email" maxlength="40" pattern="[A-Za-z0-9]+@[A-Za-z0-9]+" required data-email-safe></div>
+        <div class="form-field"><label for="checkout-email">Email</label><input id="checkout-email" name="email" type="email" autocomplete="email" maxlength="40" pattern="[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*@[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)+" required data-email-safe></div>
         <div class="form-field"><label for="checkout-phone">Phone</label><input id="checkout-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" required></div>
         <div class="form-field"><label for="checkout-address">Delivery address</label><textarea id="checkout-address" name="address" autocomplete="street-address" maxlength="300" required></textarea></div>
         <button class="button" type="submit">Place order</button>

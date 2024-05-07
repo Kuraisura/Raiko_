@@ -5,7 +5,7 @@ const path = require("node:path");
 const root = __dirname;
 const port = Number(process.env.PORT || 4173);
 const rateBuckets = new Map();
-const emailPattern = /^[A-Za-z0-9]+@[A-Za-z0-9]+$/;
+const emailPattern = /^[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*@[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)+$/;
 const newsletterEmailPattern = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
 const namePattern = /^[\p{L}\s]+$/u;
 const subjectPattern = /^[\p{L}\p{N}\s]+$/u;
@@ -70,7 +70,11 @@ async function readJSON(request) {
 async function insertInto(table, payload) {
   const url = process.env.SUPABASE_URL;
   const anon = process.env.SUPABASE_ANON;
-  if (!url || !anon) throw new Error("Supabase is not configured in .env.local");
+  if (!url || !anon) {
+    const error = new Error("Supabase is not configured in .env.local");
+    error.publicCode = "SUPABASE_NOT_CONFIGURED";
+    throw error;
+  }
   const result = await fetch(`${url.replace(/\/$/, "")}/rest/v1/${table}`, {
     method: "POST",
     headers: {
@@ -81,7 +85,12 @@ async function insertInto(table, payload) {
     },
     body: JSON.stringify(payload)
   });
-  if (!result.ok) throw new Error(await result.text() || "Supabase request failed");
+  if (!result.ok) {
+    const detail = await result.text();
+    const error = new Error(detail || "Supabase request failed");
+    error.publicCode = result.status === 404 ? "SUPABASE_SCHEMA_MISSING" : "SUPABASE_REQUEST_REJECTED";
+    throw error;
+  }
 }
 
 async function selectProducts(ids) {
@@ -103,10 +112,10 @@ async function handleAPI(request, response) {
     const email = String(body.email).trim();
     const subject = String(body.subject).trim();
     const message = String(body.message).trim();
-    if (name.length > 25 || !namePattern.test(name)) return json(response, 400, { error: "Use letters and spaces only for your name." });
-    if (email.length > 40 || !emailPattern.test(email)) return json(response, 400, { error: "Use letters and numbers with exactly one @ in the email field." });
-    if (subject.length > 25 || !subjectPattern.test(subject)) return json(response, 400, { error: "Use letters, numbers, and spaces only for the subject." });
-    if (message.length > 500) return json(response, 400, { error: "Your message is too long." });
+    if (name.length < 2 || name.length > 25 || !namePattern.test(name)) return json(response, 400, { error: "Enter a name using 2 to 25 letters and spaces." });
+    if (email.length > 40 || !emailPattern.test(email)) return json(response, 400, { error: "Enter a valid email such as name@example.com." });
+    if (subject.length < 3 || subject.length > 25 || !subjectPattern.test(subject)) return json(response, 400, { error: "Enter a subject using 3 to 25 letters, numbers, and spaces." });
+    if (message.length < 10 || message.length > 500) return json(response, 400, { error: "Enter a message containing 10 to 500 characters." });
     if (hasInappropriateContent(message)) return json(response, 400, { error: "Please remove inappropriate language before sending your message." });
     await insertInto("contact_messages", {
       name, email, subject, message,
@@ -127,7 +136,7 @@ async function handleAPI(request, response) {
     const address = String(body.address || "").trim();
     const items = Array.isArray(body.items) ? body.items : [];
     if (!name || name.length > 25 || !namePattern.test(name)) return json(response, 400, { error: "Enter a valid name using letters and spaces." });
-    if (email.length > 40 || !emailPattern.test(email)) return json(response, 400, { error: "Use letters and numbers with exactly one @ in the email field." });
+    if (email.length > 40 || !emailPattern.test(email)) return json(response, 400, { error: "Enter a valid email such as name@example.com." });
     if (!/^[-+()0-9\s]{7,20}$/.test(phone)) return json(response, 400, { error: "Enter a valid phone number." });
     if (!address || address.length > 300) return json(response, 400, { error: "Enter a valid delivery address." });
     if (!items.length || items.length > 30 || items.some((item) => !productIdPattern.test(String(item.id || "")) || !["S", "M", "L", "XL"].includes(item.size) || !Number.isInteger(item.quantity) || item.quantity < 1 || item.quantity > 10)) return json(response, 400, { error: "Your shopping bag contains invalid items." });
@@ -162,8 +171,12 @@ const server = http.createServer(async (request, response) => {
     response.end(data);
   } catch (error) {
     if (error.code === "ENOENT") return json(response, 404, { error: "Not found" });
-    console.error(error.message);
-    return json(response, 500, { error: "Unable to complete the request." });
+    const diagnosticId = crypto.randomUUID().slice(0, 8);
+    console.error(`[${diagnosticId}] ${request.method} ${request.url}:`, error.message);
+    if (error.publicCode === "SUPABASE_NOT_CONFIGURED") return json(response, 503, { error: "The contact service is not configured.", code: error.publicCode, diagnosticId });
+    if (error.publicCode === "SUPABASE_SCHEMA_MISSING") return json(response, 503, { error: "The contact database table has not been created yet.", code: error.publicCode, diagnosticId });
+    if (error.publicCode === "SUPABASE_REQUEST_REJECTED") return json(response, 502, { error: "Supabase rejected the contact request.", code: error.publicCode, diagnosticId });
+    return json(response, 500, { error: "Unable to complete the request.", code: "INTERNAL_ERROR", diagnosticId });
   }
 });
 

@@ -189,10 +189,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const contactForm = document.querySelector("[data-contact-form]");
+  const contactEmailPattern = /^[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*@[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)+$/;
+  const contactValidators = {
+    name: (value) => !value ? "Enter your name." : value.length < 2 ? "Name must contain at least two characters." : !/^[\p{L}\s]+$/u.test(value) ? "Use letters and spaces only." : "",
+    email: (value) => !value ? "Enter your email address." : !contactEmailPattern.test(value) ? "Enter a valid email such as name@example.com." : "",
+    subject: (value) => !value ? "Enter a subject." : value.length < 3 ? "Subject must contain at least three characters." : !/^[\p{L}\p{N}\s]+$/u.test(value) ? "Use letters, numbers, and spaces only." : "",
+    message: (value) => !value ? "Enter your message." : value.length < 10 ? "Message must contain at least ten characters." : hasInappropriateContent(value) ? "Please remove inappropriate language." : ""
+  };
+
+  function validateContactField(field) {
+    const validator = contactValidators[field.name];
+    if (!validator) return true;
+    const message = validator(field.value.trim());
+    let error = field.closest(".form-field")?.querySelector(".field-error");
+    if (!error) {
+      error = document.createElement("small");
+      error.className = "field-error";
+      error.id = `${field.id}-error`;
+      field.closest(".form-field")?.append(error);
+      field.setAttribute("aria-describedby", error.id);
+    }
+    error.textContent = message;
+    field.setAttribute("aria-invalid", String(Boolean(message)));
+    return !message;
+  }
+
+  contactForm?.querySelectorAll("input, textarea").forEach((field) => {
+    field.addEventListener("blur", () => validateContactField(field));
+    field.addEventListener("input", () => { if (field.getAttribute("aria-invalid")) validateContactField(field); });
+  });
+
   contactForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const feedback = contactForm.querySelector("[data-form-feedback]");
     const button = contactForm.querySelector("button[type='submit']");
+    const fields = [...contactForm.querySelectorAll("input, textarea")];
+    if (!fields.map(validateContactField).every(Boolean)) {
+      fields.find((field) => field.getAttribute("aria-invalid") === "true")?.focus();
+      feedback.textContent = "Check the highlighted fields and try again.";
+      feedback.classList.add("is-visible");
+      return;
+    }
     const message = contactForm.querySelector("[name='message']")?.value || "";
     if (hasInappropriateContent(message)) {
       feedback.textContent = "Please remove inappropriate language before sending your message.";
@@ -207,9 +244,20 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
       });
       const result = await response.json();
-      if (!response.ok) throw new Error(result.error || "Message could not be sent.");
+      if (!response.ok) {
+        console.error("Raiko contact request failed", {
+          status: response.status,
+          code: result.code || "UNKNOWN_ERROR",
+          diagnosticId: result.diagnosticId || null,
+          message: result.error || "Message could not be sent."
+        });
+        throw new Error(result.error || "Message could not be sent.");
+      }
+      console.info("Raiko contact request completed", { status: response.status });
       feedback.textContent = "Thanks for reaching out. We will reply within one business day.";
       contactForm.reset();
+      contactForm.querySelectorAll("[aria-invalid]").forEach((field) => field.removeAttribute("aria-invalid"));
+      contactForm.querySelectorAll(".field-error").forEach((error) => error.remove());
     } catch (error) {
       feedback.textContent = error.message;
     } finally {
@@ -227,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   document.querySelectorAll("[data-email-safe]").forEach((input) => {
     input.addEventListener("input", () => {
-      const cleaned = input.value.replace(/[^A-Za-z0-9@]/g, "");
+      const cleaned = input.value.replace(/[^A-Za-z0-9.@]/g, "");
       const at = cleaned.indexOf("@");
       input.value = at < 0 ? cleaned : `${cleaned.slice(0, at + 1)}${cleaned.slice(at + 1).replace(/@/g, "")}`;
     });

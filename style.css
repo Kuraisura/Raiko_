@@ -686,6 +686,8 @@ body.menu-open, body.filters-open { overflow: hidden; }
 .form-field input, .form-field textarea { width: 100%; padding: 14px 16px; border: 1px solid #aeb8cc; border-radius: 12px; background: #f8f9fc; color: var(--ink); outline: 0; }
 .form-field textarea { min-height: 150px; resize: vertical; }
 .form-field input:focus, .form-field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(8,129,120,.14); }
+.form-field [aria-invalid="true"] { border-color: #b42318; box-shadow: 0 0 0 3px rgba(180,35,24,.1); }
+.field-error { min-height: 16px; color: #b42318; font-size: 11px; font-weight: 600; line-height: 1.45; }
 .form-feedback { display: none; margin: 18px 0 0; color: #056961; font-size: 13px; font-weight: 700; }
 .form-feedback.is-visible { display: block; }
 
