@@ -1,0 +1,31 @@
+# Dependencies and build output
+node_modules/
+bin/
+obj/
+build/
+dist/
+.gradle/
+.idea/
+.vs/
+
+# Sensitive local data
+.claude/settings.local.json
+.env
+.env.*
+!.env.example
+!.env.sample
+*.db
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+local.properties
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
